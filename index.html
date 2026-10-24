@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-index">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documento sin título</title>
+<link rel="icon" type="image/x-icon" href="libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script>
+<script src="libs/jquery/jquery.min.js"> </script>
+<script src="libs/common_i18n.js"> </script>
+<script src="libs/common.js"> </script>
+<script src="libs/exe_export.js"> </script>
+<script src="libs/bootstrap/bootstrap.bundle.min.js"> </script>
+<link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+<script src="idevices/text/text.js"></script><link rel="stylesheet" href="idevices/text/text.css">
+<link rel="stylesheet" href="content/css/base.css">
+<script src="theme/style.js"> </script>
+<link rel="stylesheet" href="theme/style.css">
+
+
+</head>
+<body class="exe-export exe-single-page">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden">
+<main class="page">
+<header class="package-header"><p class="package-title">Documento sin título</p></header>
+<section id="section-49a3ceb9-6b0f-49d3-bc5f-92e937800cdd">
+<header class="main-header">
+<div class="page-header">
+<h1 class="page-title">Inversa de una matriz</h1>
+</div>
+</header>
+<div class="page-content">
+<article id="block-mvl9ndhv-zn9enjzgm" class="box sin-titulo">
+<header class="box-head no-icon">
+<h1 class="box-title">Texto</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792777859345-cmdk0m0sy" class="idevice_node text" data-idevice-path="idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792777859345-cmdk0m0sy&quot;}">
+<div class="exe-text-template">
+    <div id="gauss-tutor-wrapper" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; color: #333; box-sizing: border-box;">
+<h2 style="color: #d35400; text-align: center; border-bottom: 3px solid #f39c12; padding-bottom: 10px; margin-top: 0;">Tutor Interactivo: Inversa por Gauss-Jordan</h2>
+<div style="padding: 15px 20px; background: #fff3e0; border-bottom: 1px solid #ffcc80; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;">
+<div><button id="btn-generate-main" class="action-btn">Generar (A | I)</button></div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; gap: 15px; align-items: center;"><label style="font-weight: bold; color: #444;">Dimensión:</label> <label><input type="radio" name="inv-dim" value="2" checked="checked" /> 2x2</label> <label><input type="radio" name="inv-dim" value="3" /> 3x3</label></div>
+<div style="display: flex; gap: 15px; align-items: center;"><label style="font-weight: bold; color: #444;">Números:</label> <label><input type="radio" name="inv-tipo" value="nat" checked="checked" /> Naturales</label> <label><input type="radio" name="inv-tipo" value="ent" /> Enteros</label></div>
+</div>
+<ul style="margin: 0; padding-left: 20px;">
+<li style="font-size: 0.9em; color: #666666; max-width: 250px;"><i>Forma la matriz ampliada y triangula.</i></li>
+<li style="font-size: 0.9em; color: #666666; max-width: 250px;"><i><b>Nota:</b> Puedes usar fracciones (ej: -3/4).</i></li>
+</ul>
+</div>
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+<div style="margin-bottom: 25px; text-align: center; width: 100%;">
+<h3 style="color: #f57c00; margin-top: 0;">Matriz Ampliada (A | I)</h3>
+<div id="inv-matrix-display" style="text-align: center; margin: 10px auto; font-size: 1.3em; font-family: monospace; background: #fff;">
+<div style="display: inline-block; position: relative; padding: 0 15px;">
+<div style="position: absolute; top: 0; bottom: 0; left: 0; width: 10px; border: 2px solid #333; border-right: none; border-radius: 4px 0 0 4px;"><br /></div>
+<div style="position: absolute; top: 0; bottom: 0; right: 0; width: 10px; border: 2px solid #333; border-left: none; border-radius: 0 4px 4px 0;"><br /></div>
+<table style="border-collapse: collapse; margin: 0 auto; background: transparent;">
+<tbody>
+<tr id="m-row-0">
+<td id="m-cell-0-0" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-0-1" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-0-2" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-0-3" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-0-4" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-0-5" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+</tr>
+<tr id="m-row-1">
+<td id="m-cell-1-0" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-1-1" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-1-2" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-1-3" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-1-4" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-1-5" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+</tr>
+<tr id="m-row-2">
+<td id="m-cell-2-0" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-2-1" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-2-2" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-2-3" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-2-4" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+<td id="m-cell-2-5" style="padding: 10px 15px; text-align: center; height: 60px;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="steps-container" style="width: 100%; max-width: 800px;"><!-- Pasos inyectados por JS --></div>
+</div>
+</div>
+<style>
+    #gauss-tutor-wrapper .action-btn { background-color: #e67e22 !important; color: white !important; border: none !important; border-radius: 5px !important; cursor: pointer !important; font-weight: bold !important; padding: 10px 20px !important; font-size: 1.1em !important; transition: filter 0.3s !important; }
+    #gauss-tutor-wrapper .action-btn-dark { background-color: #d35400 !important; color: white !important; border: none !important; border-radius: 4px !important; cursor: pointer !important; font-weight: bold !important; padding: 6px 15px !important; margin: 0 5px !important; }
+    #gauss-tutor-wrapper .action-btn-alt { background-color: #7f8c8d !important; color: white !important; border: none !important; border-radius: 4px !important; cursor: pointer !important; font-weight: bold !important; padding: 6px 15px !important; margin: 0 5px !important; }
+    #gauss-tutor-wrapper button:hover { filter: brightness(0.9) !important; }
+    #gauss-tutor-wrapper button:disabled { background-color: #f9f9f9 !important; border: 1px solid #ccc !important; color: #aaa !important; cursor: not-allowed !important; }
+    
+    #gauss-tutor-wrapper .inv-paso-box { background: #fff !important; border: 1px solid #ffe0b2 !important; border-left: 5px solid #f57c00 !important; border-radius: 6px !important; padding: 15px !important; margin-bottom: 15px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; }
+    
+    #gauss-tutor-wrapper .inv-input-coef { width: 55px !important; padding: 5px !important; text-align: center !important; border: 1px solid #aaa !important; border-radius: 4px !important; font-weight: bold !important; background-color: #fff !important; color: #333 !important; }
+    #gauss-tutor-wrapper .inv-input-val { width: 55px !important; padding: 5px !important; text-align: center !important; border: 1px solid #aaa !important; border-radius: 4px !important; background-color: #fff !important; color: #333 !important; }
+    #gauss-tutor-wrapper .inv-input-val:focus, #gauss-tutor-wrapper .inv-input-coef:focus { outline: none !important; border-color: #f57c00 !important; background-color: #fff3e0 !important; box-shadow: 0 0 5px rgba(245, 124, 0, 0.3) !important; }
+    
+    #gauss-tutor-wrapper .inv-feedback { font-weight: bold !important; margin-left: 10px !important; font-size: 0.9em !important; }
+    #gauss-tutor-wrapper .inv-success { color: #28a745 !important; }
+    #gauss-tutor-wrapper .inv-error { color: #dc3545 !important; }
+    
+    #gauss-tutor-wrapper .pivot-circle {
+        display: inline-flex !important; align-items: center !important; justify-content: center !important;
+        min-width: 48px !important; min-height: 48px !important; 
+        border-radius: 50% !important; background-color: #e74c3c !important; 
+        color: white !important; font-weight: bold !important;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2) !important;
+        margin: auto !important;
+    }
+    #gauss-tutor-wrapper .target-hl {
+        display: inline-block !important; background-color: #ebf5fb !important;
+        color: #2980b9 !important; font-weight: bold !important;
+        padding: 5px 10px !important; border-radius: 6px !important;
+    }
+</style>
+<script>
+(function() {
+    function initTutor() {
+        let dim = 2;
+        let invMatrix = [];
+        let currentPhase = 0; 
+        let phaseTasksCompleted = 0;
+        let phaseTasksTotal = 0;
+        let pivotPrepared = [false, false, false]; 
+        const EPSILON = 0.0001;
+
+        let btnMain = document.getElementById('btn-generate-main');
+        if(btnMain) btnMain.onclick = invGenerar;
+
+        document.querySelectorAll('#gauss-tutor-wrapper input[name="inv-dim"]').forEach(r => r.onchange = invGenerar);
+        document.querySelectorAll('#gauss-tutor-wrapper input[name="inv-tipo"]').forEach(r => r.onchange = invGenerar);
+
+        function parseFrac(valStr) {
+            if(!valStr || valStr.trim() === '') return NaN;
+            if(valStr.includes('/')) {
+                let parts = valStr.split('/');
+                if(parts.length !== 2) return NaN;
+                return parseFloat(parts[0]) / parseFloat(parts[1]);
+            }
+            return parseFloat(valStr);
+        }
+
+        function formatFracVisual(val) {
+            if (Math.abs(Math.round(val) - val) < EPSILON) return Math.round(val).toString();
+            let sign = val < 0 ? "-" : "";
+            let x = Math.abs(val);
+            for (let d = 1; d <= 500; d++) {
+                let n = Math.round(x * d);
+                if (Math.abs(x - n/d) < EPSILON) {
+                    return `${sign}<div style="display:inline-block; text-align:center; vertical-align:middle; font-size:0.9em; margin:0 2px;"><span style="display:block; line-height:1;">${n}</span><span style="display:block; line-height:1; border-top:1px solid #333;">${d}</span></div>`;
+                }
+            }
+            return parseFloat(val.toFixed(3));
+        }
+
+        function epsEqual(a, b) { return Math.abs(a - b) < EPSILON; }
+
+        function invGenerar() {
+            let dimElem = document.querySelector('#gauss-tutor-wrapper input[name="inv-dim"]:checked');
+            let tipoElem = document.querySelector('#gauss-tutor-wrapper input[name="inv-tipo"]:checked');
+            if(!dimElem || !tipoElem) return; 
+
+            dim = parseInt(dimElem.value);
+            let isNat = tipoElem.value === 'nat';
+            let valid = false;
+            pivotPrepared = [false, false, false];
+            
+            while(!valid) {
+                invMatrix = [];
+                for(let i=0; i<dim; i++) {
+                    invMatrix[i] = [];
+                    for(let j=0; j<dim*2; j++) {
+                        if(j < dim) invMatrix[i][j] = isNat ? Math.floor(Math.random() * 9) + 1 : Math.floor(Math.random() * 19) - 9;
+                        else invMatrix[i][j] = (j - dim === i) ? 1 : 0;
+                    }
+                }
+                let det = 0;
+                if (dim === 2) {
+                    det = (invMatrix[0][0]*invMatrix[1][1]) - (invMatrix[0][1]*invMatrix[1][0]);
+                } else if (dim === 3) {
+                    det = invMatrix[0][0]*(invMatrix[1][1]*invMatrix[2][2] - invMatrix[1][2]*invMatrix[2][1])
+                        - invMatrix[0][1]*(invMatrix[1][0]*invMatrix[2][2] - invMatrix[1][2]*invMatrix[2][0])
+                        + invMatrix[0][2]*(invMatrix[1][0]*invMatrix[2][1] - invMatrix[1][1]*invMatrix[2][0]);
+                }
+                if(det !== 0 && invMatrix[0][0] !== 0) valid = true;
+            }
+
+            currentPhase = 0;
+            renderMatrix();
+            renderCurrentPhase();
+        }
+
+        function renderMatrix() {
+            for(let i=0; i<3; i++) {
+                let tr = document.getElementById(`m-row-${i}`);
+                if(!tr) continue;
+                
+                if(i >= dim) {
+                    tr.style.display = 'none';
+                } else {
+                    tr.style.display = '';
+                    for(let j=0; j<6; j++) {
+                        let td = document.getElementById(`m-cell-${i}-${j}`);
+                        if(!td) continue;
+                        
+                        if(j >= dim * 2) {
+                            td.style.display = 'none';
+                        } else {
+                            td.style.display = '';
+                            let valHtml = formatFracVisual(invMatrix[i][j]);
+                            
+                            td.style.color = '#333';
+                            td.style.fontWeight = 'normal';
+                            td.style.borderLeft = 'none';
+                            td.style.paddingLeft = '15px';
+                            
+                            if (j === dim) {
+                                td.style.borderLeft = '2px dashed #999';
+                                td.style.paddingLeft = '20px';
+                            }
+                            
+                            if (currentPhase < dim) {
+                                if (i === currentPhase && j === currentPhase) {
+                                    valHtml = `<div class="pivot-circle">${valHtml}</div>`;
+                                } else if (j === currentPhase && i !== currentPhase) {
+                                    valHtml = `<div class="target-hl">${valHtml}</div>`;
+                                }
+                            } else if (currentPhase === dim && j >= dim) {
+                                td.style.color = '#28a745';
+                                td.style.fontWeight = 'bold';
+                            }
+                            
+                            td.innerHTML = valHtml;
+                        }
+                    }
+                }
+            }
+        }
+
+        function renderCurrentPhase() {
+            let container = document.getElementById('steps-container');
+            if (!container) return;
+            
+            phaseTasksCompleted = 0;
+
+            if (currentPhase < dim) {
+                if (!pivotPrepared[currentPhase]) {
+                    container.innerHTML = generarHTMLPreparacion(currentPhase);
+                } else {
+                    phaseTasksTotal = dim - 1;
+                    container.innerHTML = generarHTMLCeros(currentPhase);
+                }
+            } else if (currentPhase === dim) {
+                phaseTasksTotal = dim;
+                container.innerHTML = generarHTMLUnos();
+            } else {
+                container.innerHTML = `<div class="inv-paso-box" style="background: #fff8e1 !important; border: 2px solid #28a745 !important; text-align: center;"><h3 style="color: #28a745; margin-top: 0;">¡Inversa Encontrada!</h3><p>La mitad derecha de la matriz superior es ahora tu matriz inversa.</p></div>`;
+            }
+            bindDynamicEvents();
+        }
+
+        function generarHTMLPreparacion(pivot) {
+            let rowOptions = '';
+            for(let r = pivot + 1; r < dim; r++) {
+                rowOptions += `<option value="${r}">Fila ${r+1}</option>`;
+            }
+
+            let swapHtml = rowOptions !== '' ? `
+                <div style="margin-bottom: 15px; display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
+                    Intercambiar F<sub>${pivot+1}</sub> con 
+                    <select id="prep-swap-sel" style="padding: 5px; border: 1px solid #aaa; border-radius: 4px;">${rowOptions}</select>
+                    <button class="action-btn-dark" id="btn-prep-swap">Aplicar Intercambio</button>
+                </div>
+            ` : '';
+
+            return `
+            <div class="inv-paso-box">
+                <div style="font-weight: bold; color: #e74c3c; margin-bottom: 15px; font-size: 1.1em;">
+                    Paso Preparatorio: Analizando el pivote a<sub>${pivot+1}${pivot+1}</sub>
+                </div>
+                
+                <div id="prep-initial-q" style="background-color: #fdf2e9; padding: 15px; border-radius: 6px; border: 1px solid #edbb99; text-align: center;">
+                    <p style="font-size: 1.1em; font-weight: bold; margin-top: 0;">¿Convertimos el pivote en un 1 o seguimos con el que tenemos?</p>
+                    <button class="action-btn-dark" id="btn-show-prep">Convertir en 1</button>
+                    <button class="action-btn-alt" id="btn-skip-prep">Seguir con el actual</button>
+                </div>
+                
+                <div id="prep-ops-panel" style="display:none; background: #fff3e0; padding: 15px; border-radius: 6px; border: 1px solid #ffcc80;">
+                    <p style="margin-top:0; color:#d35400; font-weight:bold;">Opcional: Facilita el cálculo transformando el pivote</p>
+                    ${swapHtml}
+                    <div style="margin-bottom: 15px; display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
+                        Multiplicar F<sub>${pivot+1}</sub> por <input type="text" id="prep-mult-k" class="inv-input-coef" placeholder="k"> 
+                        <button class="action-btn-dark" id="btn-prep-mult">Aplicar Multiplicación</button>
+                    </div>
+                    <div id="prep-fb" class="inv-feedback" style="display:block; margin-bottom: 15px; min-height: 20px;"></div>
+                    <div style="text-align: right; border-top: 1px dashed #ffcc80; padding-top: 15px;">
+                        <button class="action-btn-alt" id="btn-skip-prep-2">Terminar y pasar a hacer ceros</button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function generarHTMLCeros(pivot) {
+            let html = `<div class="inv-paso-box">
+                <div style="font-weight: bold; color: #f57c00; margin-bottom: 15px; font-size: 1.1em;">Haciendo Ceros usando el Pivote a<sub>${pivot+1}${pivot+1}</sub></div>`;
+            for (let r = 0; r < dim; r++) {
+                if (r === pivot) continue;
+                html += `
+                <div style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #eee;">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <div style="display:flex; align-items:center;">
+                            <input type="text" id="k-piv-${r}" class="inv-input-coef" placeholder="k${pivot+1}"> &nbsp;· F<sub>${pivot+1}</sub> +&nbsp; 
+                            <input type="text" id="k-tar-${r}" class="inv-input-coef" placeholder="k${r+1}"> &nbsp;· F<sub>${r+1}</sub> &rarr; F<sub>${r+1}</sub> 
+                            <button class="action-btn-dark check-op-btn" data-piv="${pivot}" data-tar="${r}" id="btn-op-${r}">¿Bien?</button> 
+                            <span id="fb-op-${r}" class="inv-feedback"></span>
+                        </div>
+                    </div>
+                    <div id="row-task-${r}" style="display: none; align-items: center; gap: 10px; margin-top: 10px;">
+                        F<sub>${r+1}</sub> = ( ${Array.from({length: dim*2}, (_, j) => `<input type="text" id="val-${r}-${j}" class="inv-input-val">`).join('')} )
+                        <button class="action-btn-dark check-row-btn" data-piv="${pivot}" data-tar="${r}" id="btn-row-${r}">¿Bien?</button>
+                        <span id="fb-row-${r}" class="inv-feedback"></span>
+                    </div>
+                </div>`;
+            }
+            return html + `</div>`;
+        }
+
+        function generarHTMLUnos() {
+            let html = `<div class="inv-paso-box">
+                <div style="font-weight: bold; color: #e65100; margin-bottom: 15px; font-size: 1.1em;">Último Paso: Fabricando Unos en la diagonal</div>`;
+            for (let r = 0; r < dim; r++) {
+                html += `
+                <div style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #eee;">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <div style="display:flex; align-items:center;">
+                            <input type="text" id="k-one-${r}" class="inv-input-coef"> &nbsp;· F<sub>${r+1}</sub> &rarr; F<sub>${r+1}</sub> 
+                            <button class="action-btn-dark check-op-one-btn" data-r="${r}" id="btn-op-one-${r}">¿Bien?</button> 
+                            <span id="fb-op-one-${r}" class="inv-feedback"></span>
+                        </div>
+                    </div>
+                    <div id="row-one-${r}" style="display: none; align-items: center; gap: 10px; margin-top: 10px;">
+                        F<sub>${r+1}</sub> = ( ${Array.from({length: dim*2}, (_, j) => `<input type="text" id="val-one-${r}-${j}" class="inv-input-val">`).join('')} )
+                        <button class="action-btn-dark check-row-one-btn" data-r="${r}" id="btn-row-one-${r}">¿Bien?</button>
+                        <span id="fb-row-one-${r}" class="inv-feedback"></span>
+                    </div>
+                </div>`;
+            }
+            return html + `</div>`;
+        }
+
+        function bindDynamicEvents() {
+            let btnPrep1 = document.getElementById('btn-show-prep');
+            if (btnPrep1) btnPrep1.onclick = function() {
+                document.getElementById('prep-initial-q').style.display = 'none';
+                document.getElementById('prep-ops-panel').style.display = 'block';
+            };
+
+            let btnPrepSkip = document.getElementById('btn-skip-prep');
+            if (btnPrepSkip) btnPrepSkip.onclick = function() {
+                pivotPrepared[currentPhase] = true;
+                renderCurrentPhase();
+            };
+
+            let btnPrepSkip2 = document.getElementById('btn-skip-prep-2');
+            if (btnPrepSkip2) btnPrepSkip2.onclick = function() {
+                pivotPrepared[currentPhase] = true;
+                renderCurrentPhase();
+            };
+
+            let btnPrepSwap = document.getElementById('btn-prep-swap');
+            if (btnPrepSwap) btnPrepSwap.onclick = function() { applyPrepSwap(currentPhase); };
+
+            let btnPrepMult = document.getElementById('btn-prep-mult');
+            if (btnPrepMult) btnPrepMult.onclick = function() { applyPrepMult(currentPhase); };
+
+            document.querySelectorAll('.check-op-btn').forEach(btn => {
+                btn.onclick = function() { checkOp(parseInt(this.dataset.piv), parseInt(this.dataset.tar)); };
+            });
+            document.querySelectorAll('.check-row-btn').forEach(btn => {
+                btn.onclick = function() { checkRow(parseInt(this.dataset.piv), parseInt(this.dataset.tar)); };
+            });
+            document.querySelectorAll('.check-op-one-btn').forEach(btn => {
+                btn.onclick = function() { checkOpOne(parseInt(this.dataset.r)); };
+            });
+            document.querySelectorAll('.check-row-one-btn').forEach(btn => {
+                btn.onclick = function() { checkRowOne(parseInt(this.dataset.r)); };
+            });
+        }
+
+        function applyPrepSwap(p) {
+            let sel = document.getElementById('prep-swap-sel');
+            if (!sel) return;
+            let targetRow = parseInt(sel.value);
+            let temp = invMatrix[p];
+            invMatrix[p] = invMatrix[targetRow];
+            invMatrix[targetRow] = temp;
+            renderMatrix();
+            checkIfPrepDone(p);
+        }
+
+        function applyPrepMult(p) {
+            let k = parseFrac(document.getElementById('prep-mult-k').value);
+            let fb = document.getElementById('prep-fb');
+            if (isNaN(k) || epsEqual(k, 0)) {
+                fb.innerHTML = '<span style="color:#c0392b;">Introduce una fracción válida distinta de 0.</span>';
+                return;
+            }
+            let newRow = [];
+            for (let j = 0; j < dim * 2; j++) {
+                newRow.push(invMatrix[p][j] * k);
+            }
+            invMatrix[p] = newRow;
+            document.getElementById('prep-mult-k').value = '';
+            renderMatrix();
+            checkIfPrepDone(p);
+        }
+
+        function checkIfPrepDone(p) {
+            let fb = document.getElementById('prep-fb');
+            if (epsEqual(invMatrix[p][p], 1)) {
+                fb.innerHTML = '<span style="color:#27ae60;">¡Genial! Has convertido el pivote en 1. Avanzando...</span>';
+                setTimeout(() => {
+                    pivotPrepared[p] = true;
+                    renderCurrentPhase();
+                }, 1500);
+            } else {
+                fb.innerHTML = '<span style="color:#2980b9;">Operación aplicada con éxito. El pivote aún no es 1, pero puedes continuar o seguir operando.</span>';
+            }
+        }
+
+        function checkOp(pivot, target) {
+            let kPiv = parseFrac(document.getElementById(`k-piv-${target}`).value);
+            let kTar = parseFrac(document.getElementById(`k-tar-${target}`).value);
+            let fb = document.getElementById(`fb-op-${target}`);
+            
+            if(isNaN(kPiv) || isNaN(kTar)) { fb.innerHTML = '<span class="inv-error">Completa campos</span>'; return; }
+            if(kTar === 0) { fb.innerHTML = '<span class="inv-error">No puede ser 0</span>'; return; }
+
+            if(epsEqual((kPiv * invMatrix[pivot][pivot]) + (kTar * invMatrix[target][pivot]), 0)) {
+                fb.innerHTML = '<span class="inv-success">¡Correcto!</span>';
+                document.getElementById(`row-task-${target}`).style.display = 'flex';
+                document.getElementById(`k-piv-${target}`).disabled = true;
+                document.getElementById(`k-tar-${target}`).disabled = true;
+                document.getElementById(`btn-op-${target}`).disabled = true;
+            } else { fb.innerHTML = '<span class="inv-error">No da 0</span>'; }
+        }
+
+        function checkRow(pivot, target) {
+            let kPiv = parseFrac(document.getElementById(`k-piv-${target}`).value);
+            let kTar = parseFrac(document.getElementById(`k-tar-${target}`).value);
+            let fb = document.getElementById(`fb-row-${target}`);
+            
+            let userRow = [];
+            for(let j=0; j<dim*2; j++) userRow.push(parseFrac(document.getElementById(`val-${target}-${j}`).value));
+            if(userRow.some(isNaN)) { fb.innerHTML = '<span class="inv-error">Faltan datos</span>'; return; }
+
+            let isCorrect = true, realRow = [];
+            for(let j=0; j<dim*2; j++) {
+                realRow[j] = (kPiv * invMatrix[pivot][j]) + (kTar * invMatrix[target][j]);
+                if(!epsEqual(userRow[j], realRow[j])) isCorrect = false;
+            }
+
+            if(isCorrect) {
+                fb.innerHTML = '<span class="inv-success">¡Perfecto!</span>';
+                invMatrix[target] = realRow;
+                renderMatrix();
+                for(let j=0; j<dim*2; j++) document.getElementById(`val-${target}-${j}`).disabled = true;
+                document.getElementById(`btn-row-${target}`).disabled = true;
+                if(++phaseTasksCompleted === phaseTasksTotal) setTimeout(() => { currentPhase++; renderCurrentPhase(); renderMatrix(); }, 700);
+            } else { fb.innerHTML = '<span class="inv-error">Error en la fila</span>'; }
+        }
+
+        function checkOpOne(r) {
+            let k = parseFrac(document.getElementById(`k-one-${r}`).value);
+            let fb = document.getElementById(`fb-op-one-${r}`);
+            if(isNaN(k)) return;
+
+            if(epsEqual(k * invMatrix[r][r], 1)) {
+                fb.innerHTML = '<span class="inv-success">¡Correcto!</span>';
+                document.getElementById(`row-one-${r}`).style.display = 'flex';
+                document.getElementById(`k-one-${r}`).disabled = true;
+                document.getElementById(`btn-op-one-${r}`).disabled = true;
+            } else { fb.innerHTML = '<span class="inv-error">No da 1</span>'; }
+        }
+
+        function checkRowOne(r) {
+            let k = parseFrac(document.getElementById(`k-one-${r}`).value);
+            let fb = document.getElementById(`fb-row-one-${r}`);
+            let userRow = [];
+            for(let j=0; j<dim*2; j++) userRow.push(parseFrac(document.getElementById(`val-one-${r}-${j}`).value));
+            if(userRow.some(isNaN)) return;
+
+            let isCorrect = true, realRow = [];
+            for(let j=0; j<dim*2; j++) {
+                realRow[j] = k * invMatrix[r][j];
+                if(!epsEqual(userRow[j], realRow[j])) isCorrect = false;
+            }
+
+            if(isCorrect) {
+                fb.innerHTML = '<span class="inv-success">¡OK!</span>';
+                invMatrix[r] = realRow;
+                renderMatrix();
+                for(let j=0; j<dim*2; j++) document.getElementById(`val-one-${r}-${j}`).disabled = true;
+                document.getElementById(`btn-row-one-${r}`).disabled = true;
+                if(++phaseTasksCompleted === phaseTasksTotal) setTimeout(() => { currentPhase++; renderCurrentPhase(); renderMatrix(); }, 700);
+            } else { fb.innerHTML = '<span class="inv-error">Error en fila</span>'; }
+        }
+
+        invGenerar();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTutor);
+    } else {
+        setTimeout(initTutor, 100);
+    }
+})();
+</script>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+</main>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>
