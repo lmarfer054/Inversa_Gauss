@@ -1,0 +1,928 @@
+@charset "UTF-8";
+/* @import url("postit.css");  <-- ELIMINADO, EL CÓDIGO VA AL FINAL */
+@import url("nota-azul.css");
+@import url("libreta.css");
+@import url("navegacion.css");
+@import url("comic.css");
+@import url("retroalimentacion.css");
+@import url("colores.css");
+
+
+/* =========================================
+   0. RESET Y FUENTES
+   ========================================= */
+* { box-sizing: border-box !important; }
+
+@font-face { font-family: 'Atkinson Hyperlegible'; src: url('Atkinson_Hyperlegible/AtkinsonHyperlegible-Regular.ttf') format('truetype'); font-weight: 400; }
+@font-face { font-family: 'Atkinson Hyperlegible'; src: url('Atkinson_Hyperlegible/AtkinsonHyperlegible-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Fira Sans'; src: url('Fira_Sans/FiraSans-Regular.ttf') format('truetype'); font-weight: 400; }
+@font-face { font-family: 'Fira Sans'; src: url('Fira_Sans/FiraSans-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Fira Sans'; src: url('Fira_Sans/FiraSans-ExtraBold.ttf') format('truetype'); font-weight: 800; }
+
+/* =========================================
+   1. EL LIENZO (BODY) - CORREGIDO
+   ========================================= */
+
+/* A. Estilos Generales (Aplican a la web Y al editor) */
+body {
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+    font-size: 1.05rem !important; line-height: 1.6 !important; color: #333 !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    /* AQUÍ ESTABA EL ERROR: Hemos quitado los padding de aquí */
+    overflow-x: hidden !important;
+    min-height: 100vh !important;
+    display: block !important;
+}
+
+/* B. Estilos SOLO para la web publicada (Aquí metemos los huecos) */
+/* La clase .exe-web-site solo existe en la web final, no en el editor */
+body.exe-web-site {
+    padding-left: 330px !important; 
+    padding-top: 130px !important;
+}
+
+/* C. Seguro extra para el editor (Por si acaso) */
+body#tinymce {
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+}
+
+h1, h2, h3, h4, .nodeTitle, .iDeviceTitle, #siteNav { font-family: 'Fira Sans', sans-serif !important; }
+
+/* =========================================
+   2. CABECERA VERDE
+   ========================================= */
+.page > header {
+    position: fixed !important; top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100px !important; z-index: 50000 !important;
+    background-color: #00843D !important; border-bottom: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    display: flex !important; align-items: center !important;
+}
+/* RUTA IMG: El logo es diseño general */
+.page > header::after {
+    content: "" !important; position: absolute !important;
+    top: 20px !important; left: 20px !important; width: 200px !important; height: 60px !important;
+    background: url('img/logo.png') no-repeat left center !important; background-size: contain !important; z-index: 50001 !important;
+}
+/* EL TÍTULO PRINCIPAL */
+.page > header h1, .package-title { 
+    display: block !important; color: #ffffff !important;
+    font-family: 'Fira Sans', sans-serif !important; font-weight: 700 !important; font-size: 1.8rem !important;
+    margin: -15px 0 0 300px !important; position: relative !important; z-index: 50002 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
+}
+
+/* SUBTÍTULO */
+.package-subtitle { 
+    display: block !important; 
+    position: absolute !important;
+    top: 58px !important;     
+    left: 300px !important;   
+    color: rgba(255, 255, 255, 0.85) !important; 
+    font-family: 'Fira Sans', sans-serif !important; 
+    font-size: 1.1rem !important;  
+    font-weight: 400 !important;   
+    z-index: 50002 !important;
+    margin: 0 !important;
+}
+
+/* =========================================
+   3. MENÚ LATERAL
+   ========================================= */
+#siteNav {
+    position: fixed !important; top: 100px !important; left: 0 !important;
+    width: 330px !important; height: calc(100vh - 100px) !important;
+    background-color: #f9f9f9 !important; border-right: 1px solid #d0d0d0 !important;
+    padding: 25px 15px !important; overflow-y: auto !important; z-index: 40000 !important;
+}
+#siteNav ul, #siteNav li { list-style: none !important; margin: 0 !important; padding: 0 !important; background: none !important; }
+#siteNav a {
+    display: block !important; 
+    padding: 10px 40px 10px 15px !important; 
+    margin-bottom: 5px !important;
+    background-color: #ffffff !important; 
+    color: #444 !important;
+    border-radius: 6px !important; 
+    text-decoration: none !important; 
+    border: 1px solid #ddd !important;
+    transition: all 0.2s ease !important; 
+    font-size: 0.95rem !important;
+    position: relative !important;
+}
+#siteNav ul ul a { margin-left: 15px !important; width: calc(100% - 15px) !important; }
+#siteNav ul ul ul a { margin-left: 30px !important; width: calc(100% - 30px) !important; }
+#siteNav ul ul ul ul a { margin-left: 45px !important; width: calc(100% - 45px) !important; }
+
+#siteNav li:has(ul) > a::after {
+    content: "▸" !important; position: absolute !important; right: 15px !important;
+    top: 50% !important; transform: translateY(-50%) rotate(0deg) !important; 
+    color: #999 !important; transition: transform 0.3s ease !important; font-size: 1.1em !important;
+}
+#siteNav li.active > a::after, #siteNav li.current-page-parent > a::after, #siteNav li:has(> a.active) > a::after {
+    transform: translateY(-50%) rotate(90deg) !important; color: #00843D !important;
+}
+#siteNav a:hover { background-color: #e3f2e8 !important; color: #00843D !important; border-color: #00843D !important; }
+#siteNav a.active, #siteNav .active > a { background-color: #00843D !important; color: #ffffff !important; border-color: #005925 !important; }
+#siteNav ul ul { display: none !important; }
+#siteNav li:hover > ul, #siteNav li.active > ul, #siteNav li.current-page-parent > ul, #siteNav li:has(> a.active) > ul { display: block !important; }
+
+/* =========================================
+   4. CONTENIDO (Título de Página)
+   ========================================= */
+#main, .exe-web-site main, .node-content { 
+    margin: 0 !important; padding: 0 40px 40px 40px !important; 
+    width: 100% !important; display: block !important; 
+}
+#nodeDecoration { padding: 0 !important; margin: 0 0 30px 0 !important; }
+.page-title, #nodeDecoration h1, .nodeTitle {
+    display: block !important; margin-top: 0 !important; color: #00843D !important; 
+    font-family: 'Fira Sans', sans-serif !important; 
+    font-size: 2.2em !important; font-weight: 400 !important; 
+    line-height: 1.2 !important; width: 100% !important; letter-spacing: -0.5px !important; 
+}
+
+/* =========================================
+   5. LIMPIEZA DE INTERFAZ
+   ========================================= */
+#exe-client-search, input[value="Toggle content"], button.toggler { display: none !important; }
+.iDeviceTitle { color: #333; border-bottom: 2px solid #00843D !important; font-weight: 700; font-size: 1.4em; padding-bottom: 10px; }
+
+/* =========================================
+   6. ICONOS DE IDEVICES
+   ========================================= */
+.exe-icon, .iDevice_icon { float: left !important; margin-right: 15px !important; margin-top: 5px !important; width: 40px !important; height: 40px !important; }
+.exe-icon img, .iDevice_icon img { display: block !important; width: 100% !important; height: auto !important; object-fit: contain !important; }
+
+/* =========================================
+   7. BOTÓN PLEGABLE
+   ========================================= */
+.box-head, .iDevice_header { position: relative !important; padding-right: 40px !important; }
+.box-toggle, .toggler {
+    position: absolute !important; right: 10px !important; top: 50% !important; transform: translateY(-50%) !important;
+    width: 24px !important; height: 24px !important; border: none !important;
+    background: url('icons/minus.png') no-repeat center center / contain !important;
+    text-indent: -9999px !important; overflow: hidden !important; cursor: pointer !important; z-index: 5 !important;
+}
+.box.minimized .box-toggle, .iDevice.minimized .toggler { background-image: url('icons/plus.png') !important; }
+
+/* =========================================
+   8. CABECERAS (FLEXBOX)
+   ========================================= */
+.box-head, .iDevice_header { display: flex !important; align-items: center !important; min-height: 60px !important; border-bottom: 2px solid #00843D !important; }
+.exe-icon, .iDevice_icon { float: none !important; margin: 0 15px 0 0 !important; flex-shrink: 0 !important; }
+.box-title, .iDeviceTitle { color: #00843D !important; font-weight: 700 !important; margin: 0 !important; width: 100% !important; }
+
+/* =========================================
+   9. COLORES UDL
+   ========================================= */
+.activityIdevice .box-head, .taskIdevice .box-head, .readingIdevice .box-head { border-bottom-color: #0066CC !important; }
+.activityIdevice .box-title, .taskIdevice .box-title { color: #0066CC !important; }
+.casestudyIdevice .box-head, .reflectionIdevice .box-head { border-bottom-color: #7A297B !important; }
+.casestudyIdevice .box-title, .reflectionIdevice .box-title { color: #7A297B !important; }
+
+/* =========================================
+   10. TEACHER MODE
+   ========================================= */
+#siteNav { padding-bottom: 70px !important; }
+#teacher-mode-toggler-wrapper {
+    position: fixed !important; bottom: 0; left: 0; width: 330px !important; height: 50px !important;
+    background-color: #e9e9e9 !important; border-top: 1px solid #d0d0d0 !important;
+    display: flex !important; align-items: center !important; padding-left: 40px !important; z-index: 50000 !important;
+}
+#teacher-mode-toggler-wrapper .form-check-input:checked { background-color: #00843D !important; border-color: #00843D !important; }
+
+/* =========================================
+   11. CONTADOR
+   ========================================= */
+.page-counter {
+    position: fixed !important; bottom: 0; left: 230px !important; height: 50px !important;
+    line-height: 50px !important; color: #666 !important; font-weight: 700 !important; font-size: 0.85em !important; z-index: 50001 !important;
+}
+
+/* =========================================
+   12. BOTONES UNIVERSALES (Mostrar / Ocultar interactivos)
+   ========================================= */
+
+/* 1. ESTILO BASE VERDE (Comprobar, Mostrar, etc.) */
+body.exe-web-site .exe-content input[type="button"]:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content input[type="submit"]:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content button:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content .exe-button,
+body.exe-web-site .exe-content .btn,
+body.exe-web-site .feedbackbutton,
+body.exe-web-site .iDevice_toggler {
+    /* EL CAMBIO MÁGICO: background a secas para aplastar degradados azules */
+    background: #009139 !important; 
+    color: #ffffff !important;
+    border: 2px solid #009139 !important;
+    border-radius: 6px !important;
+    padding: 8px 18px !important;
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    transition: all 0.2s ease !important;
+    text-transform: none !important; /* Dejamos el texto natural */
+    text-decoration: none !important; /* Por si es un enlace disfrazado de botón */
+    display: inline-block !important;
+}
+
+/* Hover verde (al pasar el ratón) */
+body.exe-web-site .exe-content input[type="button"]:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content input[type="submit"]:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content button:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content .exe-button:hover,
+body.exe-web-site .exe-content .btn:hover,
+body.exe-web-site .feedbackbutton:hover,
+body.exe-web-site .iDevice_toggler:hover {
+    background: #00702c !important; 
+    border-color: #00702c !important;
+    transform: translateY(-2px) !important;
+    color: #ffffff !important;
+}
+
+/* =========================================
+   EL FRANCOTIRADOR FANTASMA AZUL (Protocolo Tierra Quemada V5)
+   ========================================= */
+
+/* 1. EL WRAPPER BASE (Botón "Mostrar") */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #0056b3 !important; /* MACHACA cualquier gradiente nativo */
+    border: 2px solid transparent !important; /* Borde transparente para evitar líneas feas */
+    border-radius: 50px !important;
+    padding: 8px 18px !important;
+    overflow: hidden !important;
+    width: fit-content !important;
+}
+
+/* 2. EL TEXTO BASE (Mostrar) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper span.custom-text-overlay {
+    color: #ffffff !important;
+    font-weight: bold !important;
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    z-index: 2 !important;
+    pointer-events: none !important; /* Deja pasar el clic al input invisible */
+    margin: 0 !important;
+}
+
+/* 3. ICONO OJO BASE (Blanco inyectado por nosotros) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper span.custom-text-overlay::before {
+    content: ""; display: inline-block; width: 20px; height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>');
+    background-size: contain; background-repeat: no-repeat;
+}
+
+/* 4. ANULACIÓN DEL INPUT NATIVO (100% Invisible pero clickeable) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper input {
+    opacity: 0 !important; /* Invisibilidad total */
+    position: absolute !important;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important;
+    z-index: 10 !important;
+    cursor: pointer !important;
+    margin: 0 !important; padding: 0 !important;
+}
+
+/* 5. WRAPPER ABIERTO (El Fantasma Blanco) - DOBLE CLASE PARA MÁXIMA FUERZA */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta {
+    background: #ffffff !important; /* Blanco sólido, forzado */
+    border: 2px solid #0056b3 !important; /* Aquí sí activamos el borde azul */
+}
+
+/* 6. TEXTO ABIERTO (Letras azules) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay {
+    color: #0056b3 !important;
+}
+
+/* 7. ICONO OJO ABIERTO (Azul tachado) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay::before {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%230056b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle><line x1="1" y1="1" x2="23" y2="23"></line></svg>');
+}
+
+/* 8. EFECTOS HOVER (Ratón por encima) */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper:hover {
+    background: #004494 !important;
+    border-color: transparent !important;
+}
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover {
+    background: #e6f2ff !important;
+    border-color: #004494 !important;
+}
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover span.custom-text-overlay {
+    color: #004494 !important;
+}
+
+/* =========================================
+   13. NAVEGACIÓN INFERIOR
+   ========================================= */
+.nav-buttons { display: flex !important; justify-content: space-between !important; width: 100% !important; margin-top: 50px !important; padding: 20px 40px !important; border-top: 1px solid #ddd !important; }
+.nav-buttons a, .nav-buttons .nav-button {
+    width: 40px !important; height: 40px !important; flex: 0 0 40px !important;
+    font-size: 0 !important; text-indent: -9999px !important; overflow: hidden !important;
+    display: inline-block !important; transition: transform 0.2s ease !important;
+    background-color: transparent !important; border: 0 !important;
+}
+.nav-buttons a.prev, .nav-buttons a.previous { background: url('img/nav_prev.png') no-repeat center center / contain !important; }
+.nav-buttons a.next, .nav-buttons a.forward { background: url('img/nav_next.png') no-repeat center center / contain !important; }
+.nav-buttons a:hover { transform: scale(1.15) !important; }
+.nav-buttons span { display: none !important; }
+
+/* =========================================
+   14. LICENCIAS (DISEÑO DISCRETO CON IMAGEN)
+   ========================================= */
+
+/* 1. Volvemos invisible el texto original de eXeLearning */
+#packageLicense { 
+    padding: 30px 20px 10px 20px !important; 
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* La magia para ocultar el texto: */
+    font-size: 0 !important; 
+    color: transparent !important; 
+}
+
+/* Ocultamos también los enlaces internos del texto por si acaso */
+#packageLicense a, 
+#packageLicense span {
+    font-size: 0 !important;
+    color: transparent !important;
+}
+
+/* 2. Inyectamos tu imagen de licencia como un "botón falso" */
+#packageLicense::after {
+    content: "" !important;
+    display: block !important;
+    width: 130px !important;  /* Ajusta si la imagen se ve muy pequeña/grande */
+    height: 45px !important;  
+    background-image: url('img/licencia.png') !important; /* Llamamos a tu imagen */
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    
+    /* El toque elegante: lo hacemos un 50% transparente para que no llame la atención */
+    opacity: 0.5 !important; 
+    transition: opacity 0.3s ease !important;
+    cursor: default !important;
+}
+
+/* Al pasar el ratón, la licencia se vuelve 100% visible */
+#packageLicense:hover::after {
+    opacity: 1 !important;
+}
+/* =========================================
+   ESTILO GLOBAL DE CAJAS (FRANKI 3.0)
+   ========================================= */
+.iDevice_header {
+    background-color: transparent !important; 
+    border-bottom: 3px solid #009139 !important; 
+    padding-bottom: 10px !important;
+    margin-bottom: 20px !important;
+    display: flex !important; 
+    align-items: center !important;
+}
+.iDeviceTitle {
+    color: #009139 !important;     
+    font-weight: 800 !important;   
+    font-size: 1.4em !important;   
+    text-transform: uppercase !important; 
+    margin-left: 10px !important;  
+    font-family: 'Montserrat', sans-serif !important; 
+}
+.exe-icon, .iDevice_icon {
+    width: 40px !important; height: 40px !important; background-size: contain !important;
+    border-radius: 0 !important; border: none !important; box-shadow: none !important;
+    background-color: transparent !important;
+}
+.iDevice_inner {
+    padding: 15px !important; background-color: #f9f9f9 !important; 
+    border-radius: 0 0 10px 10px !important; border: 1px solid #eeeeee !important; border-top: none !important;
+}
+
+/* =========================================================
+   DISEÑO DE CAJAS (MISTERIO RESUELTO: ESTRUCTURA .box)
+   ========================================================= */
+
+/* 1. DISEÑO DE TARJETA (Para todas menos azul, postit y sin-nada) */
+body article.box:not(.nota-azul):not(.caja-postit):not(.sin-nada):not(.caja-comic) {
+    margin-bottom: 40px !important;       
+    background-color: #ffffff !important; 
+    border: 1px solid #dcdcdc !important; 
+    border-radius: 8px !important;        
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; 
+    overflow: hidden !important;          
+}
+body article.box:not(.nota-azul):not(.caja-postit):not(.sin-nada):not(.caja-comic) .box-content {
+    padding: 30px 40px !important;        
+}
+
+/* MODO SIN TÍTULO (CLASE NINJA) */
+body article.box.sin-titulo .box-head { display: none !important; }
+
+/* AJUSTES FINALES (TÍTULOS) */
+body article.box .box-head {
+    padding-left: 40px !important; padding-right: 40px !important; padding-top: 15px !important;
+}
+
+/* =========================================================
+   POST-IT: PLANO, AMARILLO, INCLINADO Y CON ADORNOS 📌
+   ========================================================= */
+body .exe-content article.box.caja-postit {
+    position: relative !important;        
+    background-color: #fefbd8 !important; 
+    background-image: none !important;
+    border: none !important;              
+    box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important;    
+    border-radius: 0px !important;        
+    width: 80% !important; max-width: 800px !important;
+    margin: 30px auto !important;         
+    padding: 10px !important;             
+    transform: rotate(-1.5deg) !important;
+}
+body .exe-content article.box.caja-postit .box-head, body .exe-content article.box.caja-postit header { display: none !important; }
+body .exe-content article.box.caja-postit .box-content, body .exe-content article.box.caja-postit .exe-text {
+    background: transparent !important; border: none !important; box-shadow: none !important; border-radius: 0px !important; padding: 20px 30px !important;
+}
+body .exe-content article.box.caja-postit h2, body .exe-content article.box.caja-postit h3, body .exe-content article.box.caja-postit strong {
+    color: #d32f2f !important; font-family: 'Comic Sans MS', cursive, sans-serif !important; font-size: 1.5em !important;
+    display: block !important; border-bottom: 2px dashed #d32f2f !important; margin-bottom: 15px !important; width: 100% !important;
+}
+/* CHINCHETAS Y DOBLEZ */
+body .exe-content article.box.caja-postit::before, body .exe-content article.box.caja-postit::after {
+    content: '' !important; background-size: contain !important; background-repeat: no-repeat !important; width: 35px !important; height: 35px !important; position: absolute !important; z-index: 10 !important; filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3)) !important; 
+}
+body .exe-content article.box.caja-postit::before { background-image: url('img/chincheta1.png') !important; top: 10px !important; left: 15px !important; transform: rotate(-15deg) !important; }
+body .exe-content article.box.caja-postit::after { background-image: url('img/chincheta2.png') !important; top: 10px !important; right: 15px !important; transform: rotate(10deg) !important; }
+body .exe-content article.box.caja-postit .box-content::after {
+    content: '' !important; position: absolute !important; bottom: 0 !important; right: 0 !important;
+    width: 0 !important; height: 0 !important; border-style: solid !important; border-width: 42px 42px 0 0 !important; 
+    border-color: #e3d997 transparent transparent transparent !important; filter: drop-shadow(-3px -3px 3px rgba(0, 0, 0, 0.15)) !important; z-index: 10 !important;
+}
+
+/* =========================================================
+   EL BOTÓN MENÚ (TOGGLER) Y ANIMACIONES DE OCULTACIÓN
+   ========================================================= */
+#siteNavToggler, .exe-nav-toggle {
+    display: block !important; position: fixed !important; top: 60px !important; left: 235px !important; 
+    width: 40px !important; height: 40px !important; background-color: transparent !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important; border-radius: 6px !important; cursor: pointer !important; z-index: 50003 !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important; background-position: center !important; background-size: 26px !important;
+    font-size: 0 !important; color: transparent !important; transition: all 0.2s ease !important;
+}
+#siteNavToggler:hover, .exe-nav-toggle:hover { background-color: rgba(255, 255, 255, 0.2) !important; border-color: #ffffff !important; }
+#siteNav, body.exe-web-site, #teacher-mode-toggler-wrapper { transition: left 0.4s ease, padding-left 0.4s ease !important; }
+body.siteNav-off #siteNav { left: -330px !important; }
+body.siteNav-off.exe-web-site { padding-left: 0 !important; }
+body.siteNav-off #teacher-mode-toggler-wrapper { left: -330px !important; }
+
+/* =========================================================
+   CLASE NINJA: "SIN NADA" (TEXTO FLOTANTE)
+   ========================================================= */
+/* 1. Ocultar la cabecera verde por completo */
+body article.box.sin-nada .box-head,
+body article.box.sin-nada .iDevice_header,
+body article.box.sin-nada header {
+    display: none !important;
+}
+
+/* 2. Volver invisibles las tripas de la caja y quitar rellenos */
+body article.box.sin-nada .iDevice_inner,
+body article.box.sin-nada .box-content,
+body article.box.sin-nada .exe-text {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important; 
+    margin: 0 !important;
+}
+
+/* 3. Evitar que la caja global deje un hueco fantasma enorme */
+body article.box.sin-nada {
+    margin-bottom: 15px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+/* =========================================
+   RETOQUES: BOTÓN SECUNDARIO (PRUEBA OTRA VEZ)
+   ========================================= */
+
+/* Le damos la MISMA o mayor fuerza (especificidad) que al botón principal
+   añadiendo los :not para que consiga sobreescribir el color verde */
+
+body.exe-web-site .exe-content input[type="button"]:not(.box-toggle):not(.toggler) + input[type="button"]:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content input[type="submit"]:not(.box-toggle):not(.toggler) + input[type="submit"]:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content button:not(.box-toggle):not(.toggler) + button:not(.box-toggle):not(.toggler),
+body.exe-web-site .exe-content .btn + .btn {
+    margin-left: 12px !important;
+    background: #ffffff !important;       /* Fondo blanco */
+    color: #009139 !important;            /* Texto verde */
+    border: 2px solid #009139 !important; /* Borde verde */
+}
+
+/* El Hover con la misma fuerza */
+body.exe-web-site .exe-content input[type="button"]:not(.box-toggle):not(.toggler) + input[type="button"]:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content input[type="submit"]:not(.box-toggle):not(.toggler) + input[type="submit"]:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content button:not(.box-toggle):not(.toggler) + button:not(.box-toggle):not(.toggler):hover,
+body.exe-web-site .exe-content .btn + .btn:hover {
+    background: #f2fbf5 !important;
+    border-color: #00702c !important;
+    color: #00702c !important;
+}
+/* =========================================
+   15. OCULTAR BOTÓN "GUARDAR PUNTUACIÓN" (DEFINITIVO)
+   ========================================= */
+
+/* Sumamos las clases y atributos exactos del botón para superar 
+   la fuerza (!important) de nuestra propia regla de botones verdes */
+
+body.exe-web-site .exe-content input[type="button"].feedbackbutton.Games-SendScore,
+body.exe-web-site .exe-content input[type="button"][id^="tofPSendScore"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+/* =========================================
+   CLASE DE UTILIDAD: SIN-COPA (VERSIÓN NUCLEAR)
+   ========================================= */
+
+/* Atacamos con selectores [class*="..."] por si eXe le añade números variables al final (ej: CMPT-GameMinimize-0) */
+body [class*="sin-copa"] [class*="CMPT-GameScoreBoard"],
+body [class*="sin-copa"] [class*="CMPT-GameMinimize"],
+body [class*="sin-copa"] [class*="GameScore"],
+body [class*="sin-copa"] [class*="GameMinimize"] {
+    display: none !important;
+    /* Si el JS fuerza el display, estas reglas lo vuelven un fantasma: */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    pointer-events: none !important; /* Evita que el usuario haga clic sin querer */
+    overflow: hidden !important;
+}
+/* =========================================
+   CLASE DE UTILIDAD: SIN-BARRAS (Para iDevice Selecciona)
+   ========================================= */
+body [class*="sin-barras"] [class*="CMPT-GameSelect-GameBoard"],
+body [class*="sin-barras"] [class*="CMPT-"] graphics,
+body [class*="sin-barras"] [class*="GameSelect"] graphics,
+body [class*="sin-barras"] svg.CMPT-GameSelect-GameBoard {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+/* =========================================
+   CLASE DE UTILIDAD: VIDEO-MAGICO (Responsive Video)
+   ========================================= */
+/* Obligamos a que cualquier vídeo dentro de un iDevice con esta clase se adapte al 100% del ancho sin romper la altura */
+body [class*="video-magico"] iframe,
+body [class*="video-magico"] object,
+body [class*="video-magico"] embed,
+body [class*="video-magico"] video {
+    max-width: 100% !important; /* Nunca te salgas de la caja */
+    width: 100% !important;     /* Ocupa todo el espacio disponible */
+    height: auto !important;    /* Ajusta la altura automáticamente... */
+    aspect-ratio: 16 / 9 !important; /* ...manteniendo la proporción clásica de Youtube/vídeo */
+    display: block !important;
+    margin: 0 auto !important;  /* Centrado por si acaso */
+    border-radius: 8px !important; /* Bordes suaves para que no sea un bloque rígido */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; /* Sombrita elegante */
+}
+/* =========================================
+   ESCAPE ROOM: EL CANDADO DIGITAL
+   ========================================= */
+
+/* 1. La Caja del Enigma */
+body .exe-content .escape-room.candado {
+    background-color: #2c3e50 !important; /* Gris muy oscuro/azulado */
+    border: 2px solid #34495e !important;
+    border-radius: 8px !important;
+    padding: 30px !important;
+    margin: 30px auto !important;
+    color: #ecf0f1 !important; /* Texto claro */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3) !important;
+    max-width: 700px !important;
+}
+
+/* Títulos dentro de la caja */
+body .exe-content .escape-room.candado h3 {
+    color: #f1c40f !important; /* Amarillo "Alerta/Premio" */
+    border-bottom: 1px dashed #7f8c8d !important;
+    padding-bottom: 10px !important;
+    margin-top: 0 !important;
+}
+
+/* 2. El Panel de Control (Input y Botón) */
+body .exe-content .panel-control {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+    align-items: center !important;
+}
+
+/* El cuadro de texto */
+body .exe-content .input-secreto {
+    flex-grow: 1 !important;
+    background-color: #1a252f !important;
+    border: 2px solid #7f8c8d !important;
+    color: #2ecc71 !important; /* Texto verde terminal */
+    padding: 12px 15px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, monospace !important; /* Fuente de "hacker" */
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    text-transform: lowercase !important; /* Facilita la comprobación */
+}
+
+body .exe-content .input-secreto:focus {
+    outline: none !important;
+    border-color: #f1c40f !important;
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.5) !important;
+}
+
+/* El Botón de Desbloqueo */
+body .exe-content button.btn-candado {
+    background-color: #e74c3c !important; /* Rojo candado */
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-transform: uppercase !important;
+}
+
+body .exe-content button.btn-candado:hover {
+    background-color: #c0392b !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 3. Mensajes de Error y Éxito */
+body .exe-content .mensaje-error {
+    color: #e74c3c !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+}
+
+body .exe-content .secreto-oculto {
+    margin-top: 30px !important;
+    background-color: #27ae60 !important; /* Verde victoria */
+    color: white !important;
+    padding: 20px !important;
+    border-radius: 6px !important;
+    border: 2px solid #2ecc71 !important;
+    animation: aparecer 0.5s ease-out forwards !important;
+}
+
+body .exe-content .secreto-oculto h3 {
+    color: white !important;
+    border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+/* Pequeña animación para cuando aparezca el premio */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* =========================================
+   ESCAPE ROOM: OPERACIÓN PEÑÓN (ESTILO TERMINAL)
+   ========================================= */
+body .exe-content .bunker-escape {
+    background-color: #1a1a24 !important; /* Fondo casi negro */
+    border: 3px solid #33ff33 !important; /* Borde verde neón */
+    border-radius: 12px !important;
+    padding: 30px !important;
+    margin: 40px auto !important;
+    color: #e0e0e0 !important;
+    font-family: 'Courier New', Courier, monospace !important; /* Fuente de ordenador antiguo */
+    box-shadow: 0 0 20px rgba(51, 255, 51, 0.2), inset 0 0 10px rgba(0,0,0,0.8) !important;
+    max-width: 800px !important;
+    text-align: center !important;
+}
+
+body .exe-content .bunker-escape .img-sala {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: 2px solid #555 !important;
+    margin-bottom: 20px !important;
+}
+
+body .exe-content .bunker-escape .titulo-sala {
+    color: #33ff33 !important; /* Verde neón */
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.5) !important;
+    border-bottom: 1px dashed #33ff33 !important;
+    padding-bottom: 10px !important;
+    margin-top: 0 !important;
+    text-transform: uppercase !important;
+}
+
+/* El Panel de Control */
+body .exe-content .bunker-escape .panel-control {
+    background-color: rgba(0,0,0,0.5) !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    margin-top: 25px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: center !important;
+}
+
+body .exe-content .bunker-escape .input-hacker {
+    background-color: #000 !important;
+    color: #33ff33 !important;
+    border: 1px solid #33ff33 !important;
+    padding: 10px 15px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 1.2em !important;
+    text-transform: lowercase !important;
+    width: 60% !important;
+    min-width: 200px !important;
+}
+
+body .exe-content .bunker-escape .input-hacker:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px rgba(51, 255, 51, 0.5) !important;
+}
+
+body .exe-content .bunker-escape button.btn-desbloquear {
+    background-color: #33ff33 !important;
+    color: #000 !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    transition: all 0.2s ease !important;
+}
+
+body .exe-content .bunker-escape button.btn-desbloquear:hover {
+    background-color: #fff !important;
+    box-shadow: 0 0 15px #33ff33 !important;
+}
+
+body .exe-content .bunker-escape .mensaje-alerta {
+    color: #ff3333 !important; /* Rojo alerta */
+    width: 100% !important;
+    margin-top: 10px !important;
+    font-weight: bold !important;
+}
+
+body .exe-content .bunker-escape .sala-victoria {
+    border-color: #ffff33 !important; /* Borde dorado al ganar */
+}
+/* Imágenes explicativas en los Retos */
+body .exe-content .bunker-escape .img-explicativa {
+    display: block !important;
+    max-width: 80% !important;
+    margin: 20px auto !important;
+    border: 2px dashed #f1c40f !important; /* Borde amarillo para resaltar la pista */
+    padding: 5px !important;
+    background-color: rgba(255,255,255,0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.2) !important;
+}
+/* =========================================
+   EL TACHADO ROJO (Láser de Precisión)
+   ========================================= */
+body.exe-web-site .exe-content [class*="ejercicio-custom"] div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 38px !important; /* Mueve el número arriba/abajo si la línea no queda centrada en el ojo */
+    top: 50% !important;
+    width: 22px !important; /* Largo de la línea roja */
+    height: 3px !important; /* Grosor de la línea roja */
+    background-color: #e74c3c !important; /* Color Rojo intenso */
+    transform: translateY(-50%) rotate(-45deg) !important;
+    z-index: 50 !important;
+    pointer-events: none !important;
+    border-radius: 2px !important;
+}
+/* =========================================
+   VARIANTES DE COLOR PARA BOTONES FANTASMA
+   ========================================= */
+
+/* -----------------------------------------
+   1. VARIANTE MORADA (.ejercicio-custom-morado)
+   ----------------------------------------- */
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper {
+    background: #7A297B !important; 
+}
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta {
+    background: #ffffff !important;
+    border-color: #7A297B !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay {
+    color: #7A297B !important;
+}
+/* Ojo tachado morado */
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay::before {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%237A297B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle><line x1="1" y1="1" x2="23" y2="23"></line></svg>');
+}
+/* Hovers Morados */
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper:hover {
+    background: #5c1f5d !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover {
+    background: #f7e6f7 !important;
+    border-color: #5c1f5d !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-morado div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover span.custom-text-overlay {
+    color: #5c1f5d !important;
+}
+
+/* -----------------------------------------
+   2. VARIANTE VERDE (.ejercicio-custom-verde)
+   ----------------------------------------- */
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper {
+    background: #00843D !important; 
+}
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta {
+    background: #ffffff !important;
+    border-color: #00843D !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay {
+    color: #00843D !important;
+}
+/* Ojo tachado verde */
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay::before {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%2300843D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle><line x1="1" y1="1" x2="23" y2="23"></line></svg>');
+}
+/* Hovers Verdes */
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper:hover {
+    background: #005925 !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover {
+    background: #e3f2e8 !important;
+    border-color: #005925 !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-verde div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover span.custom-text-overlay {
+    color: #005925 !important;
+}
+
+/* -----------------------------------------
+   3. VARIANTE NARANJA (.ejercicio-custom-naranja)
+   ----------------------------------------- */
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper {
+    background: #f57c00 !important; 
+}
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta {
+    background: #ffffff !important;
+    border-color: #f57c00 !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay {
+    color: #f57c00 !important;
+}
+/* Ojo tachado naranja */
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta span.custom-text-overlay::before {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="%23f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle><line x1="1" y1="1" x2="23" y2="23"></line></svg>');
+}
+/* Hovers Naranjas */
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper:hover {
+    background: #e65100 !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover {
+    background: #fff3e0 !important;
+    border-color: #e65100 !important;
+}
+body.exe-web-site .exe-content .ejercicio-custom-naranja div.feedbackbutton-wrapper.solucion-abierta.solucion-abierta:hover span.custom-text-overlay {
+    color: #e65100 !important;
+}
